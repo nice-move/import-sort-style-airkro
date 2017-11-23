@@ -1,0 +1,23 @@
+{
+  "name": "import-sort-style-antd",
+  "version": "0.0.5",
+  "author": "Eric Chen",
+  "description": "import style for antd project",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "dependencies": {
+    "import-sort": "^3.3.0",
+    "import-sort-style": "^3.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1"
+  },
+  "optionalDependencies": {
+    "tslint": "^5.8.0",
+    "tslint-config-airbnb": "^5.4.2"
+  },
+  "scripts": {
+    "build": "node_modules/.bin/tsc",
+    "watch": "node_modules/.bin/tsc -w"
+  }
+}
