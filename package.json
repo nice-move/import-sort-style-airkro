@@ -6,11 +6,11 @@
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "import-sort": "^3.3.0",
-    "import-sort-style": "^3.0.0"
+    "import-sort": "^4.2.0",
+    "import-sort-style": "^4.2.0"
   },
   "devDependencies": {
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.2"
   },
   "optionalDependencies": {
     "tslint": "^5.8.0",
