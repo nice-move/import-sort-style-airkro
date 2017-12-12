@@ -63,7 +63,8 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     },
     {
       sortNamedMembers,
-      match: moduleName(aboutModule('webpack'))
+      match: moduleName(aboutModule('webpack')),
+      sort: moduleName(naturally)
     },
     setSeparator,
     {
@@ -89,7 +90,13 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     },
     {
       sortNamedMembers,
-      match: moduleName(aboutModule('redux'))
+      match: moduleName(aboutModule('redux')),
+      sort: moduleName(naturally)
+    },
+    {
+      sortNamedMembers,
+      match: moduleName(aboutModule('react')),
+      sort: moduleName(naturally)
     },
     {
       sortNamedMembers,
@@ -98,20 +105,13 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     {
       sortNamedMembers,
       match: moduleName(
-        oneOfModule(['qs', 'axios', 'classnames', 'immutable', 'lodash', 'md5', 'flat', 'is-url'])
-      )
-    },
-    {
-      sortNamedMembers,
-      match: moduleName(isModule('moment'))
+        oneOfModule(['axios', 'classnames', 'immutable', 'lodash', 'moment'])
+      ),
+      sort: moduleName(naturally)
     },
     {
       sortNamedMembers,
       match: moduleName(aboutModule('moment'))
-    },
-    {
-      sortNamedMembers,
-      match: moduleName(aboutModule('react'))
     },
     {
       // import foo from "bar"
