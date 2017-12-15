@@ -120,7 +120,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     {
       // import foo from "bar"
       sortNamedMembers,
-      match: isAbsoluteModule,
+      match: and(isAbsoluteModule, not(isStylesModule)),
       sort: moduleName(naturally)
     },
     setSeparator,
