@@ -45,7 +45,11 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     setSeparator,
     {
       // import "foo"
-      match: and(hasNoMember, isAbsoluteModule, not(moduleName(aboutModule('moment'))))
+      match: and(
+        hasNoMember,
+        isAbsoluteModule,
+        not(isStylesModule),
+        not(moduleName(aboutModule('moment'))))
     },
     setSeparator,
     {
