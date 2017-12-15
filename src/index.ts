@@ -3,7 +3,7 @@ import { IComparatorFunction, IMatcherFunction, IStyleAPI, IStyleItem } from 'im
 const setSeparator = { separator: true };
 
 const isStylesModule: IMatcherFunction = imported =>
-  Boolean(imported.moduleName.match(/\.(s?css|less|postcss)$/));
+  Boolean(imported.moduleName.match(/\.(s?css|less|postcss|pcss)$/));
 
 const isImagesModule: IMatcherFunction = imported =>
   Boolean(imported.moduleName.match(/\.(jpe?g|png|svg)$/));
@@ -142,9 +142,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     setSeparator,
     {
       // import "./style.css";
-      sortNamedMembers,
-      match: isStylesModule,
-      sort: [dotSegmentCount]
+      match: isStylesModule
     },
     setSeparator,
     {
