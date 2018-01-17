@@ -1,22 +1,28 @@
-# Import Sort Style Antd
+# import-sort-style-airkro
+
+import style for personal use
+
+[![npm version](https://badge.fury.io/js/import-sort-style-airkro.svg)](https://www.npmjs.com/package/import-sort-style-airkro)
 
 ## Installation
 
-```cmd
-npm install -O github:airkro/import-sort-style-antd
+```js
+npm install import-sort-style-airkro -O
+
+// or
+
+yarn add import-sort-style-airkro -O
 ```
 
 ## Usage
 
-Add following settings to your `package.json`:
+Add following settings to your `.importsortrc`:
 
 ```json
 {
-  "importSort": {
-    ".js, .jsx": {
-      "parser": "babylon",
-      "style": "antd"
-    }
+  ".js, .jsx": {
+    "parser": "babylon",
+    "style": "airkro"
   }
 }
 ```

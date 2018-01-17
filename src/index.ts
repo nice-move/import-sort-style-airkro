@@ -1,4 +1,9 @@
-import { IComparatorFunction, IMatcherFunction, IStyleAPI, IStyleItem } from 'import-sort-style';
+import {
+  IComparatorFunction,
+  IMatcherFunction,
+  IStyleAPI,
+  IStyleItem
+} from "import-sort-style";
 
 const setSeparator = { separator: true };
 
@@ -8,13 +13,16 @@ const isStylesModule: IMatcherFunction = imported =>
 const isImagesModule: IMatcherFunction = imported =>
   Boolean(imported.moduleName.match(/\.(jpe?g|png|svg)$/));
 
-const isSiblingModule: IMatcherFunction = imported => Boolean(imported.moduleName.match(/^\.\//));
+const isSiblingModule: IMatcherFunction = imported =>
+  Boolean(imported.moduleName.match(/^\.\//));
 
 const isModule = (name: string) => (moduleName: string) => moduleName === name;
 
-const oneOfModule = (modules: string[]) => (moduleName: string) => modules.indexOf(moduleName) > -1;
+const oneOfModule = (modules: string[]) => (moduleName: string) =>
+  modules.indexOf(moduleName) > -1;
 
-const aboutModule = (name: string) => (moduleName: string) => moduleName.indexOf(name) > -1;
+const aboutModule = (name: string) => (moduleName: string) =>
+  moduleName.indexOf(name) > -1;
 
 export default (styleApi: IStyleAPI): IStyleItem[] => {
   const {
@@ -49,7 +57,8 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         hasNoMember,
         isAbsoluteModule,
         not(isStylesModule),
-        not(moduleName(aboutModule('moment'))))
+        not(moduleName(aboutModule("moment")))
+      )
     },
     setSeparator,
     {
@@ -63,59 +72,59 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     {
       // import Webpack from "webpack"
       sortNamedMembers,
-      match: moduleName(isModule('webpack'))
+      match: moduleName(isModule("webpack"))
     },
     {
       sortNamedMembers,
-      match: moduleName(aboutModule('webpack')),
+      match: moduleName(aboutModule("webpack")),
       sort: moduleName(naturally)
     },
     setSeparator,
     {
       // import React from "react"
       sortNamedMembers,
-      match: moduleName(isModule('react'))
+      match: moduleName(isModule("react"))
     },
     {
       sortNamedMembers,
-      match: moduleName(isModule('prop-types'))
+      match: moduleName(isModule("prop-types"))
     },
     {
       sortNamedMembers,
-      match: moduleName(isModule('react-dom'))
+      match: moduleName(isModule("react-dom"))
     },
     {
       sortNamedMembers,
-      match: moduleName(isModule('react-router-dom'))
+      match: moduleName(isModule("react-router-dom"))
     },
     {
       sortNamedMembers,
-      match: moduleName(isModule('redux'))
+      match: moduleName(isModule("redux"))
     },
     {
       sortNamedMembers,
-      match: moduleName(aboutModule('redux')),
+      match: moduleName(aboutModule("redux")),
       sort: moduleName(naturally)
     },
     {
       sortNamedMembers,
-      match: moduleName(aboutModule('react')),
+      match: moduleName(aboutModule("react")),
       sort: moduleName(naturally)
     },
     {
       sortNamedMembers,
-      match: moduleName(isModule('antd'))
+      match: moduleName(isModule("antd"))
     },
     {
       sortNamedMembers,
       match: moduleName(
-        oneOfModule(['axios', 'classnames', 'immutable', 'lodash', 'moment'])
+        oneOfModule(["axios", "classnames", "immutable", "lodash", "moment"])
       ),
       sort: moduleName(naturally)
     },
     {
       sortNamedMembers,
-      match: moduleName(aboutModule('moment'))
+      match: moduleName(aboutModule("moment"))
     },
     {
       // import foo from "bar"
@@ -128,7 +137,12 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
       // import … from "./foo";
       // import … from "../foo";
       sortNamedMembers,
-      match: and(isRelativeModule, isSiblingModule, not(isImagesModule), not(isStylesModule)),
+      match: and(
+        isRelativeModule,
+        isSiblingModule,
+        not(isImagesModule),
+        not(isStylesModule)
+      ),
       sort: [dotSegmentCount, moduleName(naturally)]
     },
     setSeparator,
@@ -136,7 +150,12 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
       // import … from "./foo";
       // import … from "../foo";
       sortNamedMembers,
-      match: and(isRelativeModule, not(isSiblingModule), not(isImagesModule), not(isStylesModule)),
+      match: and(
+        isRelativeModule,
+        not(isSiblingModule),
+        not(isImagesModule),
+        not(isStylesModule)
+      ),
       sort: [dotSegmentCount, moduleName(naturally)]
     },
     setSeparator,

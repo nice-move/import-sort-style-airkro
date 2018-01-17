@@ -1,10 +1,14 @@
 {
-  "name": "import-sort-style-antd",
-  "version": "0.0.7",
+  "name": "import-sort-style-airkro",
+  "version": "0.0.5",
   "author": "Eric Chen",
-  "description": "import style for antd project",
+  "description": "import style for personal use",
   "license": "MIT",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Airkro/import-sort-style-airkro"
+  },
   "dependencies": {
     "import-sort": "^4.2.0",
     "import-sort-style": "^4.2.0"
@@ -13,7 +17,7 @@
     "typescript": "^2.6.2"
   },
   "optionalDependencies": {
-    "tslint": "^5.8.0",
+    "tslint": "^5.9.1",
     "tslint-config-airbnb": "^5.4.2"
   },
   "scripts": {
