@@ -1,14 +1,9 @@
 {
   "name": "import-sort-style-airkro",
-  "version": "0.0.6",
+  "version": "0.0.1",
   "author": "Eric Chen",
   "description": "import style for personal use",
-  "license": "MIT",
-  "main": "lib/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Airkro/import-sort-style-airkro"
-  },
+  "license": "UNLICENSED",
   "dependencies": {
     "import-sort": "^4.2.0",
     "import-sort-style": "^4.2.0"
@@ -21,7 +16,7 @@
     "tslint-config-airbnb": "^5.6.0"
   },
   "scripts": {
-    "build": "node_modules/.bin/tsc",
-    "watch": "node_modules/.bin/tsc -w"
+    "build": "tsc",
+    "watch": "tsc -w"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "import-sort-style-airkro",
+  "version": "0.0.7",
+  "author": "Eric Chen",
+  "description": "import style for personal use",
+  "license": "UNLICENSED",
+  "main": "lib/index.js",
+  "repository": "airkro/import-sort-style-airkro",
+  "dependencies": {
+    "import-sort": "^4.2.0",
+    "import-sort-style": "^4.2.0"
+  }
+}

@@ -38,6 +38,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     moduleName,
     naturally,
     not,
+    or,
     startsWithLowerCase,
     startsWithUpperCase,
     unicode
@@ -83,7 +84,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     {
       // import React from "react"
       sortNamedMembers,
-      match: moduleName(isModule('react'))
+      match: moduleName(oneOfModule(['react', 'vue']))
     },
     {
       sortNamedMembers,
@@ -95,7 +96,13 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     },
     {
       sortNamedMembers,
-      match: moduleName(isModule('react-router-dom'))
+      match: moduleName(oneOfModule(['react-router', 'vue-router'])),
+      sort: moduleName(naturally)
+    },
+    {
+      sortNamedMembers,
+      match: moduleName(aboutModule('react-router')),
+      sort: moduleName(naturally)
     },
     {
       sortNamedMembers,
@@ -108,12 +115,15 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     },
     {
       sortNamedMembers,
-      match: moduleName(aboutModule('react')),
+      match: or(
+        moduleName(aboutModule('react')),
+        moduleName(aboutModule('vue'))
+      ),
       sort: moduleName(naturally)
     },
     {
       sortNamedMembers,
-      match: moduleName(isModule('antd'))
+      match: moduleName(oneOfModule(['antd', 'ant-mobile', 'vant', 'vux']))
     },
     {
       sortNamedMembers,
@@ -165,7 +175,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     },
     setSeparator,
     {
-      // import "./image.jpg";
+      // import image from "./image.jpg";
       sortNamedMembers,
       match: isImagesModule,
       sort: [dotSegmentCount, moduleName(naturally)]

@@ -8,7 +8,7 @@ const isModule = (name) => (moduleName) => moduleName === name;
 const oneOfModule = (modules) => (moduleName) => modules.indexOf(moduleName) > -1;
 const aboutModule = (name) => (moduleName) => moduleName.indexOf(name) > -1;
 exports.default = (styleApi) => {
-    const { alias, and, dotSegmentCount, hasNoMember, hasOnlyDefaultMember, isAbsoluteModule, isNodeModule, isRelativeModule, member, moduleName, naturally, not, startsWithLowerCase, startsWithUpperCase, unicode } = styleApi;
+    const { alias, and, dotSegmentCount, hasNoMember, hasOnlyDefaultMember, isAbsoluteModule, isNodeModule, isRelativeModule, member, moduleName, naturally, not, or, startsWithLowerCase, startsWithUpperCase, unicode } = styleApi;
     const sortNamedMembers = alias(unicode);
     return [
         {
@@ -44,7 +44,7 @@ exports.default = (styleApi) => {
         {
             // import React from "react"
             sortNamedMembers,
-            match: moduleName(isModule('react'))
+            match: moduleName(oneOfModule(['react', 'vue']))
         },
         {
             sortNamedMembers,
@@ -56,7 +56,13 @@ exports.default = (styleApi) => {
         },
         {
             sortNamedMembers,
-            match: moduleName(isModule('react-router-dom'))
+            match: moduleName(oneOfModule(['react-router', 'vue-router'])),
+            sort: moduleName(naturally)
+        },
+        {
+            sortNamedMembers,
+            match: moduleName(aboutModule('react-router')),
+            sort: moduleName(naturally)
         },
         {
             sortNamedMembers,
@@ -69,12 +75,12 @@ exports.default = (styleApi) => {
         },
         {
             sortNamedMembers,
-            match: moduleName(aboutModule('react')),
+            match: or(moduleName(aboutModule('react')), moduleName(aboutModule('vue'))),
             sort: moduleName(naturally)
         },
         {
             sortNamedMembers,
-            match: moduleName(isModule('antd'))
+            match: moduleName(oneOfModule(['antd', 'ant-mobile', 'vant', 'vux']))
         },
         {
             sortNamedMembers,
@@ -114,7 +120,7 @@ exports.default = (styleApi) => {
         },
         setSeparator,
         {
-            // import "./image.jpg";
+            // import image from "./image.jpg";
             sortNamedMembers,
             match: isImagesModule,
             sort: [dotSegmentCount, moduleName(naturally)]
