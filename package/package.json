@@ -1,6 +1,6 @@
 {
   "name": "import-sort-style-airkro",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "Eric Chen",
   "description": "import style for personal use",
   "license": "MIT",
@@ -9,5 +9,8 @@
   "dependencies": {
     "import-sort": "^4.2.0",
     "import-sort-style": "^4.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.7.1"
   }
 }

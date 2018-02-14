@@ -35,14 +35,15 @@ exports.default = (styleApi) => {
             // Useful base library
             sortNamedMembers,
             match: oneOfModule([
-                'moment',
-                'lodash',
-                'axios',
                 'ajv',
+                'axios',
                 'classnames',
+                'flat',
                 'immutable',
+                'lodash',
                 'md5',
-                'flat'
+                'moment',
+                'qs'
             ]),
             sort: moduleName(naturally)
         },
