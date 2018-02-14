@@ -1,128 +1,171 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const setSeparator = { separator: true };
-const isStylesModule = imported => Boolean(imported.moduleName.match(/\.(s?css|less|postcss|pcss)$/));
-const isImagesModule = imported => Boolean(imported.moduleName.match(/\.(jpe?g|png|svg)$/));
+const isDataModule = imported => Boolean(imported.moduleName.match(/\.(json|json5|yaml|yml|toml|tml|xml|txt|ini|md)$/));
+const isStyleModule = imported => Boolean(imported.moduleName.match(/\.(s?css|less|postcss|pcss)$/));
+const isImageModule = imported => Boolean(imported.moduleName.match(/\.(jpe?g|png|svg)$/));
 const isSiblingModule = imported => Boolean(imported.moduleName.match(/^\.\//));
-const isModule = (name) => (moduleName) => moduleName === name;
-const oneOfModule = (modules) => (moduleName) => modules.indexOf(moduleName) > -1;
-const aboutModule = (name) => (moduleName) => moduleName.indexOf(name) > -1;
 exports.default = (styleApi) => {
     const { alias, and, dotSegmentCount, hasNoMember, hasOnlyDefaultMember, isAbsoluteModule, isNodeModule, isRelativeModule, member, moduleName, naturally, not, or, startsWithLowerCase, startsWithUpperCase, unicode } = styleApi;
     const sortNamedMembers = alias(unicode);
+    const isModule = (name) => moduleName((moduleName) => moduleName === name);
+    const oneOfModule = (modules) => moduleName((moduleName) => modules.indexOf(moduleName) > -1);
+    const aboutModule = (name) => and(moduleName((moduleName) => moduleName.indexOf(name) > -1), isAbsoluteModule);
     return [
         {
             // import "./foo"
-            match: and(hasNoMember, isRelativeModule, not(isStylesModule)),
+            match: and(hasNoMember, isRelativeModule, not(isStyleModule)),
             sort: [dotSegmentCount]
         },
         setSeparator,
         {
             // import "foo"
-            match: and(hasNoMember, isAbsoluteModule, not(isStylesModule), not(moduleName(aboutModule('moment'))))
+            match: and(hasNoMember, isAbsoluteModule, not(isStyleModule), not(aboutModule('moment')))
         },
         setSeparator,
         {
-            // import … from "fs";
-            // import … from "path";
+            // import fs from "fs"
+            // import path from "path"
             sortNamedMembers,
             match: isNodeModule,
             sort: moduleName(naturally)
         },
         setSeparator,
         {
-            // import Webpack from "webpack"
+            // Useful base library
             sortNamedMembers,
-            match: moduleName(isModule('webpack'))
+            match: oneOfModule([
+                'moment',
+                'lodash',
+                'axios',
+                'ajv',
+                'classnames',
+                'immutable',
+                'md5',
+                'flat'
+            ]),
+            sort: moduleName(naturally)
         },
         {
+            // import "moment-duration-format"
             sortNamedMembers,
-            match: moduleName(aboutModule('webpack')),
+            match: aboutModule('moment')
+        },
+        setSeparator,
+        {
+            // import Webpack from "webpack"
+            sortNamedMembers,
+            match: isModule('webpack')
+        },
+        {
+            // import HtmlWebpackPlugin from 'html-webpack-plugin'
+            sortNamedMembers,
+            match: aboutModule('webpack'),
             sort: moduleName(naturally)
         },
         setSeparator,
         {
             // import React from "react"
+            // import Vue from "vue"
             sortNamedMembers,
-            match: moduleName(oneOfModule(['react', 'vue']))
+            match: oneOfModule(['react', 'vue'])
         },
         {
+            // import PropTypes from "prop-types"
             sortNamedMembers,
-            match: moduleName(isModule('prop-types'))
+            match: isModule('prop-types')
         },
         {
+            // import ReactDOM from "react-dom"
             sortNamedMembers,
-            match: moduleName(isModule('react-dom'))
+            match: isModule('react-dom')
         },
         {
+            // import {...} from "react-router"
             sortNamedMembers,
-            match: moduleName(oneOfModule(['react-router', 'vue-router'])),
+            match: oneOfModule(['react-router', 'vue-router']),
             sort: moduleName(naturally)
         },
         {
+            // import {...} from "react-router-dom"
             sortNamedMembers,
-            match: moduleName(aboutModule('react-router')),
+            match: aboutModule('react-router'),
             sort: moduleName(naturally)
         },
         {
+            // import {...} from "redux"
             sortNamedMembers,
-            match: moduleName(isModule('redux'))
+            match: oneOfModule(['redux', 'vuex'])
         },
         {
+            // import {...} from "redux-saga"
             sortNamedMembers,
-            match: moduleName(aboutModule('redux')),
+            match: or(aboutModule('redux'), aboutModule('vuex')),
             sort: moduleName(naturally)
         },
         {
+            // import {...} from "react-modal"
+            // import {...} from "vue-table"
             sortNamedMembers,
-            match: or(moduleName(aboutModule('react')), moduleName(aboutModule('vue'))),
+            match: and(or(aboutModule('react'), aboutModule('vue')), isAbsoluteModule),
             sort: moduleName(naturally)
         },
         {
+            // Popular UI Toolkit/Library in China
             sortNamedMembers,
-            match: moduleName(oneOfModule(['antd', 'ant-mobile', 'vant', 'vux']))
+            match: oneOfModule([
+                'antd',
+                'ant-design-pro',
+                'antd-mobile',
+                'element-react',
+                'element-ui',
+                'iview',
+                'material-ui',
+                'mint-ui',
+                'react-uwp',
+                'semantic-ui-react',
+                'vant',
+                'vonic',
+                'vux',
+                'zent'
+            ])
         },
-        {
-            sortNamedMembers,
-            match: moduleName(oneOfModule(['axios', 'classnames', 'immutable', 'lodash', 'moment'])),
-            sort: moduleName(naturally)
-        },
-        {
-            sortNamedMembers,
-            match: moduleName(aboutModule('moment'))
-        },
+        setSeparator,
         {
             // import foo from "bar"
             sortNamedMembers,
-            match: and(isAbsoluteModule, not(isStylesModule)),
+            match: and(isAbsoluteModule, not(isStyleModule)),
             sort: moduleName(naturally)
         },
         setSeparator,
         {
             // import … from "./foo";
+            sortNamedMembers,
+            match: and(isRelativeModule, isSiblingModule, not(isDataModule), not(isImageModule), not(isStyleModule)),
+            sort: moduleName(naturally)
+        },
+        setSeparator,
+        {
             // import … from "../foo";
             sortNamedMembers,
-            match: and(isRelativeModule, isSiblingModule, not(isImagesModule), not(isStylesModule)),
+            match: and(isRelativeModule, not(isSiblingModule), not(isDataModule), not(isImageModule), not(isStyleModule)),
             sort: [dotSegmentCount, moduleName(naturally)]
         },
         setSeparator,
         {
-            // import … from "./foo";
-            // import … from "../foo";
-            sortNamedMembers,
-            match: and(isRelativeModule, not(isSiblingModule), not(isImagesModule), not(isStylesModule)),
+            // import data from "./data.json";
+            match: isDataModule,
             sort: [dotSegmentCount, moduleName(naturally)]
         },
         setSeparator,
         {
             // import "./style.css";
-            match: isStylesModule
+            match: isStyleModule
         },
         setSeparator,
         {
             // import image from "./image.jpg";
-            sortNamedMembers,
-            match: isImagesModule,
+            match: isImageModule,
             sort: [dotSegmentCount, moduleName(naturally)]
         },
         setSeparator
