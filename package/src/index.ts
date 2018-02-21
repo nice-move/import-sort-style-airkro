@@ -124,13 +124,9 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     },
     {
       // import PropTypes from "prop-types"
-      sortNamedMembers,
-      match: isModule('prop-types')
-    },
-    {
       // import ReactDOM from "react-dom"
       sortNamedMembers,
-      match: isModule('react-dom')
+      match: oneOfModule(['prop-types', 'react-dom'])
     },
     {
       // import {...} from "react-router"
@@ -156,6 +152,12 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
       sort: moduleName(naturally)
     },
     {
+      // import {...} from "dva"
+      sortNamedMembers,
+      match: or(aboutModule('dva'), aboutModule('mirrorx')),
+      sort: moduleName(naturally)
+    },
+    {
       // import {...} from "react-modal"
       // import {...} from "vue-table"
       sortNamedMembers,
@@ -178,6 +180,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         'material-ui',
         'mint-ui',
         'react-uwp',
+        'reactstrap',
         'semantic-ui-react',
         'vant',
         'vonic',

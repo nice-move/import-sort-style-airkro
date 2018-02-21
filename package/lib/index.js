@@ -73,13 +73,9 @@ exports.default = (styleApi) => {
         },
         {
             // import PropTypes from "prop-types"
-            sortNamedMembers,
-            match: isModule('prop-types')
-        },
-        {
             // import ReactDOM from "react-dom"
             sortNamedMembers,
-            match: isModule('react-dom')
+            match: oneOfModule(['prop-types', 'react-dom'])
         },
         {
             // import {...} from "react-router"
@@ -105,6 +101,12 @@ exports.default = (styleApi) => {
             sort: moduleName(naturally)
         },
         {
+            // import {...} from "dva"
+            sortNamedMembers,
+            match: or(aboutModule('dva'), aboutModule('mirrorx')),
+            sort: moduleName(naturally)
+        },
+        {
             // import {...} from "react-modal"
             // import {...} from "vue-table"
             sortNamedMembers,
@@ -124,6 +126,7 @@ exports.default = (styleApi) => {
                 'material-ui',
                 'mint-ui',
                 'react-uwp',
+                'reactstrap',
                 'semantic-ui-react',
                 'vant',
                 'vonic',
