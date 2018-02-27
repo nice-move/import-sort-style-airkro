@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const setSeparator = { separator: true };
-const isDataModule = imported => Boolean(imported.moduleName.match(/\.(json|json5|yaml|yml|toml|tml|xml|txt|ini|md)$/));
+const isDataModule = imported => Boolean(imported.moduleName.match(/\.(json|yaml|yml|toml|tml|xml|txt|ini|md)$/));
 const isStyleModule = imported => Boolean(imported.moduleName.match(/\.(s?css|less|postcss|pcss)$/));
 const isImageModule = imported => Boolean(imported.moduleName.match(/\.(jpe?g|png|svg)$/));
 const isSiblingModule = imported => Boolean(imported.moduleName.match(/^\.\//));
@@ -14,13 +14,13 @@ exports.default = (styleApi) => {
     return [
         {
             // import "./foo"
-            match: and(hasNoMember, isRelativeModule, not(isStyleModule)),
+            match: and(hasNoMember, isRelativeModule, not(isStyleModule), not(isDataModule), not(isImageModule)),
             sort: [dotSegmentCount]
         },
         setSeparator,
         {
             // import "foo"
-            match: and(hasNoMember, isAbsoluteModule, not(isStyleModule), not(aboutModule('moment')))
+            match: and(hasNoMember, isAbsoluteModule, not(isStyleModule), not(isDataModule), not(isImageModule), not(aboutModule('moment')))
         },
         setSeparator,
         {
@@ -138,7 +138,7 @@ exports.default = (styleApi) => {
         {
             // import foo from "bar"
             sortNamedMembers,
-            match: and(isAbsoluteModule, not(isStyleModule)),
+            match: and(isAbsoluteModule, not(isStyleModule), not(isDataModule), not(isImageModule)),
             sort: moduleName(naturally)
         },
         setSeparator,

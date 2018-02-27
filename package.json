@@ -9,11 +9,11 @@
     "import-sort-style": "^4.2.0"
   },
   "devDependencies": {
-    "typescript": "^2.7.1"
+    "typescript": "^2.7.2"
   },
   "optionalDependencies": {
     "tslint": "^5.9.1",
-    "tslint-config-airbnb": "^5.6.0"
+    "tslint-config-airbnb": "^5.7.0"
   },
   "scripts": {
     "build": "tsc",

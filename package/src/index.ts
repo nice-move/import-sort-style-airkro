@@ -9,9 +9,7 @@ const setSeparator = { separator: true };
 
 const isDataModule: IMatcherFunction = imported =>
   Boolean(
-    imported.moduleName.match(
-      /\.(json|json5|yaml|yml|toml|tml|xml|txt|ini|md)$/
-    )
+    imported.moduleName.match(/\.(json|yaml|yml|toml|tml|xml|txt|ini|md)$/)
   );
 
 const isStyleModule: IMatcherFunction = imported =>
@@ -60,7 +58,13 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
   return [
     {
       // import "./foo"
-      match: and(hasNoMember, isRelativeModule, not(isStyleModule)),
+      match: and(
+        hasNoMember,
+        isRelativeModule,
+        not(isStyleModule),
+        not(isDataModule),
+        not(isImageModule)
+      ),
       sort: [dotSegmentCount]
     },
     setSeparator,
@@ -70,6 +74,8 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         hasNoMember,
         isAbsoluteModule,
         not(isStyleModule),
+        not(isDataModule),
+        not(isImageModule),
         not(aboutModule('moment'))
       )
     },
@@ -192,7 +198,12 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     {
       // import foo from "bar"
       sortNamedMembers,
-      match: and(isAbsoluteModule, not(isStyleModule)),
+      match: and(
+        isAbsoluteModule,
+        not(isStyleModule),
+        not(isDataModule),
+        not(isImageModule)
+      ),
       sort: moduleName(naturally)
     },
     setSeparator,
