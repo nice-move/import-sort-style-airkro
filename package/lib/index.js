@@ -32,6 +32,13 @@ exports.default = (styleApi) => {
         },
         setSeparator,
         {
+            // import fs from "fs-extra"
+            sortNamedMembers,
+            match: isModule('fs-extra'),
+            sort: moduleName(naturally)
+        },
+        setSeparator,
+        {
             // Useful base library
             sortNamedMembers,
             match: oneOfModule([
@@ -41,6 +48,7 @@ exports.default = (styleApi) => {
                 'flat',
                 'immutable',
                 'lodash',
+                'luxon',
                 'md5',
                 'moment',
                 'qs'
@@ -69,13 +77,15 @@ exports.default = (styleApi) => {
             // import React from "react"
             // import Vue from "vue"
             sortNamedMembers,
-            match: oneOfModule(['react', 'vue'])
+            match: oneOfModule(['react', 'vue']),
+            sort: moduleName(naturally)
         },
         {
             // import PropTypes from "prop-types"
             // import ReactDOM from "react-dom"
             sortNamedMembers,
-            match: oneOfModule(['prop-types', 'react-dom'])
+            match: oneOfModule(['prop-types', 'react-dom']),
+            sort: moduleName(naturally)
         },
         {
             // import {...} from "react-router"
@@ -85,25 +95,21 @@ exports.default = (styleApi) => {
         },
         {
             // import {...} from "react-router-dom"
+            // import {...} from "vue-router-sync"
             sortNamedMembers,
-            match: aboutModule('react-router'),
+            match: or(aboutModule('react-router'), aboutModule('vue-router')),
             sort: moduleName(naturally)
         },
         {
             // import {...} from "redux"
             sortNamedMembers,
-            match: oneOfModule(['redux', 'vuex'])
+            match: oneOfModule(['redux', 'vuex']),
+            sort: moduleName(naturally)
         },
         {
             // import {...} from "redux-saga"
             sortNamedMembers,
             match: or(aboutModule('redux'), aboutModule('vuex')),
-            sort: moduleName(naturally)
-        },
-        {
-            // import {...} from "dva"
-            sortNamedMembers,
-            match: or(aboutModule('dva'), aboutModule('mirrorx')),
             sort: moduleName(naturally)
         },
         {
@@ -113,6 +119,7 @@ exports.default = (styleApi) => {
             match: and(or(aboutModule('react'), aboutModule('vue')), isAbsoluteModule),
             sort: moduleName(naturally)
         },
+        setSeparator,
         {
             // Popular UI Toolkit/Library in China
             sortNamedMembers,
@@ -132,7 +139,8 @@ exports.default = (styleApi) => {
                 'vonic',
                 'vux',
                 'zent'
-            ])
+            ]),
+            sort: moduleName(naturally)
         },
         setSeparator,
         {
@@ -143,17 +151,17 @@ exports.default = (styleApi) => {
         },
         setSeparator,
         {
-            // import … from "./foo";
-            sortNamedMembers,
-            match: and(isRelativeModule, isSiblingModule, not(isDataModule), not(isImageModule), not(isStyleModule)),
-            sort: moduleName(naturally)
-        },
-        setSeparator,
-        {
             // import … from "../foo";
             sortNamedMembers,
             match: and(isRelativeModule, not(isSiblingModule), not(isDataModule), not(isImageModule), not(isStyleModule)),
             sort: [dotSegmentCount, moduleName(naturally)]
+        },
+        setSeparator,
+        {
+            // import … from "./foo";
+            sortNamedMembers,
+            match: and(isRelativeModule, isSiblingModule, not(isDataModule), not(isImageModule), not(isStyleModule)),
+            sort: moduleName(naturally)
         },
         setSeparator,
         {

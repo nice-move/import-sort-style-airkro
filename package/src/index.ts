@@ -89,6 +89,13 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     },
     setSeparator,
     {
+      // import fs from "fs-extra"
+      sortNamedMembers,
+      match: isModule('fs-extra'),
+      sort: moduleName(naturally)
+    },
+    setSeparator,
+    {
       // Useful base library
       sortNamedMembers,
       match: oneOfModule([
@@ -98,6 +105,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         'flat',
         'immutable',
         'lodash',
+        'luxon',
         'md5',
         'moment',
         'qs'
@@ -171,6 +179,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
       ),
       sort: moduleName(naturally)
     },
+    setSeparator,
     {
       // Popular UI Toolkit/Library in China
       sortNamedMembers,
@@ -207,19 +216,6 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     },
     setSeparator,
     {
-      // import … from "./foo";
-      sortNamedMembers,
-      match: and(
-        isRelativeModule,
-        isSiblingModule,
-        not(isDataModule),
-        not(isImageModule),
-        not(isStyleModule)
-      ),
-      sort: moduleName(naturally)
-    },
-    setSeparator,
-    {
       // import … from "../foo";
       sortNamedMembers,
       match: and(
@@ -230,6 +226,19 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         not(isStyleModule)
       ),
       sort: [dotSegmentCount, moduleName(naturally)]
+    },
+    setSeparator,
+    {
+      // import … from "./foo";
+      sortNamedMembers,
+      match: and(
+        isRelativeModule,
+        isSiblingModule,
+        not(isDataModule),
+        not(isImageModule),
+        not(isStyleModule)
+      ),
+      sort: moduleName(naturally)
     },
     setSeparator,
     {
