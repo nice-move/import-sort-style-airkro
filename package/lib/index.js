@@ -20,7 +20,7 @@ exports.default = (styleApi) => {
         setSeparator,
         {
             // import "foo"
-            match: and(hasNoMember, isAbsoluteModule, not(isStyleModule), not(isDataModule), not(isImageModule), not(aboutModule('moment')))
+            match: and(hasNoMember, isAbsoluteModule, not(isStyleModule), not(isDataModule), not(isImageModule), not(aboutModule('moment')), not(aboutModule('echarts')))
         },
         setSeparator,
         {
@@ -34,17 +34,18 @@ exports.default = (styleApi) => {
         {
             // import fs from "fs-extra"
             sortNamedMembers,
-            match: isModule('fs-extra'),
+            match: oneOfModule(['fs-extra', 'serialport', 'electron']),
             sort: moduleName(naturally)
         },
         setSeparator,
         {
             // Useful base library
             sortNamedMembers,
-            match: oneOfModule([
+            match: or(oneOfModule([
                 'ajv',
                 'axios',
                 'classnames',
+                'echarts',
                 'flat',
                 'immutable',
                 'lodash',
@@ -52,13 +53,13 @@ exports.default = (styleApi) => {
                 'md5',
                 'moment',
                 'qs'
-            ]),
+            ]), aboutModule('lodash')),
             sort: moduleName(naturally)
         },
         {
             // import "moment-duration-format"
             sortNamedMembers,
-            match: aboutModule('moment')
+            match: or(aboutModule('moment'), aboutModule('echarts'))
         },
         setSeparator,
         {

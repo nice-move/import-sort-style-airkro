@@ -76,7 +76,8 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         not(isStyleModule),
         not(isDataModule),
         not(isImageModule),
-        not(aboutModule('moment'))
+        not(aboutModule('moment')),
+        not(aboutModule('echarts'))
       )
     },
     setSeparator,
@@ -91,31 +92,35 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     {
       // import fs from "fs-extra"
       sortNamedMembers,
-      match: isModule('fs-extra'),
+      match: oneOfModule(['fs-extra', 'serialport', 'electron']),
       sort: moduleName(naturally)
     },
     setSeparator,
     {
       // Useful base library
       sortNamedMembers,
-      match: oneOfModule([
-        'ajv',
-        'axios',
-        'classnames',
-        'flat',
-        'immutable',
-        'lodash',
-        'luxon',
-        'md5',
-        'moment',
-        'qs'
-      ]),
+      match: or(
+        oneOfModule([
+          'ajv',
+          'axios',
+          'classnames',
+          'echarts',
+          'flat',
+          'immutable',
+          'lodash',
+          'luxon',
+          'md5',
+          'moment',
+          'qs'
+        ]),
+        aboutModule('lodash')
+      ),
       sort: moduleName(naturally)
     },
     {
       // import "moment-duration-format"
       sortNamedMembers,
-      match: aboutModule('moment')
+      match: or(aboutModule('moment'), aboutModule('echarts'))
     },
     setSeparator,
     {
