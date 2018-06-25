@@ -1,6 +1,6 @@
 {
   "name": "import-sort-style-airkro",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Eric Chen",
   "description": "import style for personal use",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "url": "https://github.com/airkro/import-sort-style-airkro"
   },
   "dependencies": {
-    "import-sort": "^4.2.0",
-    "import-sort-style": "^4.2.0"
+    "import-sort": "^5.0.0",
+    "import-sort-style": "^5.0.0"
   }
 }

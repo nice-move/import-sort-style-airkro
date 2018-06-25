@@ -194,7 +194,6 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         'antd-mobile',
         'element-react',
         'element-ui',
-        'iview',
         'material-ui',
         'mint-ui',
         'react-uwp',

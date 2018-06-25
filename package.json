@@ -5,15 +5,15 @@
   "description": "import style for personal use",
   "license": "MIT",
   "dependencies": {
-    "import-sort": "^4.2.0",
-    "import-sort-style": "^4.2.0"
+    "import-sort": "^5.0.0",
+    "import-sort-style": "^5.0.0"
   },
   "devDependencies": {
-    "typescript": "^2.8.1"
+    "typescript": "^2.9.2"
   },
   "optionalDependencies": {
-    "tslint": "^5.9.1",
-    "tslint-config-airbnb": "^5.8.0"
+    "tslint": "^5.10.0",
+    "tslint-config-airbnb": "^5.9.2"
   },
   "scripts": {
     "build": "tsc",
