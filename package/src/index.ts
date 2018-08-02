@@ -1,5 +1,4 @@
 import {
-  IComparatorFunction,
   IMatcherFunction,
   IStyleAPI,
   IStyleItem
@@ -27,17 +26,13 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     and,
     dotSegmentCount,
     hasNoMember,
-    hasOnlyDefaultMember,
     isAbsoluteModule,
     isNodeModule,
     isRelativeModule,
-    member,
     moduleName,
     naturally,
     not,
     or,
-    startsWithLowerCase,
-    startsWithUpperCase,
     unicode
   } = styleApi;
 

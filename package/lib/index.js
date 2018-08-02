@@ -6,7 +6,7 @@ const isStyleModule = imported => Boolean(imported.moduleName.match(/\.(s?css|le
 const isImageModule = imported => Boolean(imported.moduleName.match(/\.(jpe?g|png|svg)$/));
 const isSiblingModule = imported => Boolean(imported.moduleName.match(/^\.\//));
 exports.default = (styleApi) => {
-    const { alias, and, dotSegmentCount, hasNoMember, hasOnlyDefaultMember, isAbsoluteModule, isNodeModule, isRelativeModule, member, moduleName, naturally, not, or, startsWithLowerCase, startsWithUpperCase, unicode } = styleApi;
+    const { alias, and, dotSegmentCount, hasNoMember, isAbsoluteModule, isNodeModule, isRelativeModule, moduleName, naturally, not, or, unicode } = styleApi;
     const sortNamedMembers = alias(unicode);
     const isModule = (name) => moduleName((moduleName) => moduleName === name);
     const oneOfModule = (modules) => moduleName((moduleName) => modules.indexOf(moduleName) > -1);

@@ -10,7 +10,7 @@
     "url": "https://github.com/airkro/import-sort-style-airkro"
   },
   "dependencies": {
-    "import-sort": "^5.0.0",
+    "import-sort": "^5.2.0",
     "import-sort-style": "^5.0.0"
   }
 }
