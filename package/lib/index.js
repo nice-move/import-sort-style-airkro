@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const setSeparator = { separator: true };
 const isDataModule = imported => Boolean(imported.moduleName.match(/\.(json|yaml|yml|toml|tml|xml|txt|ini|md)$/));
 const isStyleModule = imported => Boolean(imported.moduleName.match(/\.(s?css|less|postcss|pcss)$/));
-const isImageModule = imported => Boolean(imported.moduleName.match(/\.(jpe?g|png|svg)$/));
+const isImageModule = imported => Boolean(imported.moduleName.match(/\.(jpe?g|png|gif|svg)$/));
 const isSiblingModule = imported => Boolean(imported.moduleName.match(/^\.\//));
 exports.default = (styleApi) => {
     const { alias, and, dotSegmentCount, hasNoMember, isAbsoluteModule, isNodeModule, isRelativeModule, moduleName, naturally, not, or, unicode } = styleApi;
@@ -20,7 +20,7 @@ exports.default = (styleApi) => {
         setSeparator,
         {
             // import "foo"
-            match: and(hasNoMember, isAbsoluteModule, not(isStyleModule), not(isDataModule), not(isImageModule), not(aboutModule('moment')), not(aboutModule('echarts')))
+            match: and(hasNoMember, isAbsoluteModule, not(isStyleModule), not(isDataModule), not(isImageModule), not(aboutModule('moment')))
         },
         setSeparator,
         {
@@ -45,7 +45,6 @@ exports.default = (styleApi) => {
                 'ajv',
                 'axios',
                 'classnames',
-                'echarts',
                 'flat',
                 'immutable',
                 'lodash',
@@ -59,7 +58,7 @@ exports.default = (styleApi) => {
         {
             // import "moment-duration-format"
             sortNamedMembers,
-            match: or(aboutModule('moment'), aboutModule('echarts'))
+            match: aboutModule('moment')
         },
         setSeparator,
         {

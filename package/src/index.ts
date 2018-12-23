@@ -1,8 +1,4 @@
-import {
-  IMatcherFunction,
-  IStyleAPI,
-  IStyleItem
-} from 'import-sort-style';
+import { IMatcherFunction, IStyleAPI, IStyleItem } from 'import-sort-style';
 
 const setSeparator = { separator: true };
 
@@ -15,7 +11,7 @@ const isStyleModule: IMatcherFunction = imported =>
   Boolean(imported.moduleName.match(/\.(s?css|less|postcss|pcss)$/));
 
 const isImageModule: IMatcherFunction = imported =>
-  Boolean(imported.moduleName.match(/\.(jpe?g|png|svg)$/));
+  Boolean(imported.moduleName.match(/\.(jpe?g|png|gif|svg)$/));
 
 const isSiblingModule: IMatcherFunction = imported =>
   Boolean(imported.moduleName.match(/^\.\//));
@@ -71,8 +67,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         not(isStyleModule),
         not(isDataModule),
         not(isImageModule),
-        not(aboutModule('moment')),
-        not(aboutModule('echarts'))
+        not(aboutModule('moment'))
       )
     },
     setSeparator,
@@ -99,7 +94,6 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
           'ajv',
           'axios',
           'classnames',
-          'echarts',
           'flat',
           'immutable',
           'lodash',
@@ -115,7 +109,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
     {
       // import "moment-duration-format"
       sortNamedMembers,
-      match: or(aboutModule('moment'), aboutModule('echarts'))
+      match: aboutModule('moment')
     },
     setSeparator,
     {

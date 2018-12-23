@@ -2,6 +2,25 @@
 # yarn lockfile v1
 
 
+"@fimbul/bifrost@^0.15.0":
+  version "0.15.0"
+  resolved "http://registry.npm.taobao.org/@fimbul/bifrost/download/@fimbul/bifrost-0.15.0.tgz#f3a48dee3046681e926c1f970f0b1a67e29e088e"
+  integrity sha1-86SN7jBGaB6SbB+XDwsaZ+KeCI4=
+  dependencies:
+    "@fimbul/ymir" "^0.15.0"
+    get-caller-file "^2.0.0"
+    tslib "^1.8.1"
+    tsutils "^3.1.0"
+
+"@fimbul/ymir@^0.15.0":
+  version "0.15.0"
+  resolved "http://registry.npm.taobao.org/@fimbul/ymir/download/@fimbul/ymir-0.15.0.tgz#944c881b14fadf7b43d1ae00b445e42261bb407f"
+  integrity sha1-lEyIGxT633tD0a4AtEXkImG7QH8=
+  dependencies:
+    inversify "^5.0.0"
+    reflect-metadata "^0.1.12"
+    tslib "^1.8.1"
+
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
@@ -120,6 +139,11 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
+get-caller-file@^2.0.0:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/get-caller-file/download/get-caller-file-2.0.1.tgz#25835260d3a2b9665fcdbb08cb039a7bbf7011c0"
+  integrity sha1-JYNSYNOiuWZfzbsIywOae79wEcA=
+
 glob@^7.1.1:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
@@ -170,6 +194,11 @@ inherits@2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
+inversify@^5.0.0:
+  version "5.0.1"
+  resolved "http://registry.npm.taobao.org/inversify/download/inversify-5.0.1.tgz#500d709b1434896ce5a0d58915c4a4210e34fb6e"
+  integrity sha1-UA1wmxQ0iWzloNWJFcSkIQ40+24=
+
 is-builtin-module@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-builtin-module/-/is-builtin-module-2.0.0.tgz#431104b3b4ba838ec7a17d82bb3bccd2233e8cd9"
@@ -210,6 +239,11 @@ path-is-absolute@^1.0.0:
 path-parse@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
+
+reflect-metadata@^0.1.12:
+  version "0.1.12"
+  resolved "http://registry.npm.taobao.org/reflect-metadata/download/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
+  integrity sha1-MRvwxrY814LyKKgavhRqK/qcVvI=
 
 resolve@^1.3.2:
   version "1.5.0"
@@ -263,38 +297,44 @@ tslib@^1.8.1:
   version "1.9.3"
   resolved "http://registry.npm.taobao.org/tslib/download/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
-tslint-config-airbnb@^5.9.2:
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/tslint-config-airbnb/-/tslint-config-airbnb-5.9.2.tgz#fdb37a695ec09b663d5ee92e7852a7a9337ec44c"
+tslint-config-airbnb@^5.11.1:
+  version "5.11.1"
+  resolved "http://registry.npm.taobao.org/tslint-config-airbnb/download/tslint-config-airbnb-5.11.1.tgz#51a27fbb8bf24c144d064a274a71da47e7ece617"
+  integrity sha1-UaJ/u4vyTBRNBkonSnHaR+fs5hc=
   dependencies:
-    tslint-consistent-codestyle "^1.10.0"
-    tslint-eslint-rules "^5.3.1"
-    tslint-microsoft-contrib "~5.0.1"
+    tslint-consistent-codestyle "^1.14.1"
+    tslint-eslint-rules "^5.4.0"
+    tslint-microsoft-contrib "~5.2.1"
 
-tslint-consistent-codestyle@^1.10.0:
-  version "1.10.1"
-  resolved "http://registry.npm.taobao.org/tslint-consistent-codestyle/download/tslint-consistent-codestyle-1.10.1.tgz#39052c454c98c29ffc053020b1ecb23da848f257"
+tslint-consistent-codestyle@^1.14.1:
+  version "1.14.1"
+  resolved "http://registry.npm.taobao.org/tslint-consistent-codestyle/download/tslint-consistent-codestyle-1.14.1.tgz#8555f1b05ccbf093166a73347f41eb101731a522"
+  integrity sha1-hVXxsFzL8JMWanM0f0HrEBcxpSI=
   dependencies:
+    "@fimbul/bifrost" "^0.15.0"
     tslib "^1.7.1"
-    tsutils "^2.12.2"
+    tsutils "^2.29.0"
 
-tslint-eslint-rules@^5.3.1:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/tslint-eslint-rules/-/tslint-eslint-rules-5.3.1.tgz#10dec4361df0b3e4385d91ff8e0226bda4ec2ad4"
+tslint-eslint-rules@^5.4.0:
+  version "5.4.0"
+  resolved "http://registry.npm.taobao.org/tslint-eslint-rules/download/tslint-eslint-rules-5.4.0.tgz#e488cc9181bf193fe5cd7bfca213a7695f1737b5"
+  integrity sha1-5IjMkYG/GT/lzXv8ohOnaV8XN7U=
   dependencies:
     doctrine "0.7.2"
     tslib "1.9.0"
-    tsutils "2.8.0"
+    tsutils "^3.0.0"
 
-tslint-microsoft-contrib@~5.0.1:
-  version "5.0.1"
-  resolved "http://registry.npm.taobao.org/tslint-microsoft-contrib/download/tslint-microsoft-contrib-5.0.1.tgz#328ee9c28d07cdf793293204c96e2ffab9221994"
+tslint-microsoft-contrib@~5.2.1:
+  version "5.2.1"
+  resolved "http://registry.npm.taobao.org/tslint-microsoft-contrib/download/tslint-microsoft-contrib-5.2.1.tgz#a6286839f800e2591d041ea2800c77487844ad81"
+  integrity sha1-pihoOfgA4lkdBB6igAx3SHhErYE=
   dependencies:
-    tsutils "^1.4.0"
+    tsutils "^2.27.2 <2.29.0"
 
-tslint@^5.11.0:
-  version "5.11.0"
-  resolved "http://registry.npm.taobao.org/tslint/download/tslint-5.11.0.tgz#98f30c02eae3cde7006201e4c33cb08b48581eed"
+tslint@^5.12.0:
+  version "5.12.0"
+  resolved "http://registry.npm.taobao.org/tslint/download/tslint-5.12.0.tgz#47f2dba291ed3d580752d109866fb640768fca36"
+  integrity sha1-R/LbopHtPVgHUtEJhm+2QHaPyjY=
   dependencies:
     babel-code-frame "^6.22.0"
     builtin-modules "^1.1.1"
@@ -309,31 +349,30 @@ tslint@^5.11.0:
     tslib "^1.8.0"
     tsutils "^2.27.2"
 
-tsutils@2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.8.0.tgz#0160173729b3bf138628dd14a1537e00851d814a"
-  dependencies:
-    tslib "^1.7.1"
-
-tsutils@^1.4.0:
-  version "1.9.1"
-  resolved "http://registry.npm.taobao.org/tsutils/download/tsutils-1.9.1.tgz#b9f9ab44e55af9681831d5f28d0aeeaf5c750cb0"
-
-tsutils@^2.12.2:
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.12.2.tgz#ad58a4865d17ec3ddb6631b6ca53be14a5656ff3"
-  dependencies:
-    tslib "^1.7.1"
-
-tsutils@^2.27.2:
+tsutils@^2.27.2, tsutils@^2.29.0:
   version "2.29.0"
   resolved "http://registry.npm.taobao.org/tsutils/download/tsutils-2.29.0.tgz#32b488501467acbedd4b85498673a0812aca0b99"
   dependencies:
     tslib "^1.8.1"
 
-typescript@^3.0.1:
-  version "3.0.1"
-  resolved "http://registry.npm.taobao.org/typescript/download/typescript-3.0.1.tgz#43738f29585d3a87575520a4b93ab6026ef11fdb"
+"tsutils@^2.27.2 <2.29.0":
+  version "2.28.0"
+  resolved "http://registry.npm.taobao.org/tsutils/download/tsutils-2.28.0.tgz#6bd71e160828f9d019b6f4e844742228f85169a1"
+  integrity sha1-a9ceFggo+dAZtvToRHQiKPhRaaE=
+  dependencies:
+    tslib "^1.8.1"
+
+tsutils@^3.0.0, tsutils@^3.1.0:
+  version "3.5.2"
+  resolved "http://registry.npm.taobao.org/tsutils/download/tsutils-3.5.2.tgz#6fd3c2d5a731e83bb21b070a173ec0faf3a8f6d3"
+  integrity sha1-b9PC1acx6DuyGwcKFz7A+vOo9tM=
+  dependencies:
+    tslib "^1.8.1"
+
+typescript@^3.2.2:
+  version "3.2.2"
+  resolved "http://registry.npm.taobao.org/typescript/download/typescript-3.2.2.tgz#fe8101c46aa123f8353523ebdcf5730c2ae493e5"
+  integrity sha1-/oEBxGqhI/g1NSPr3PVzDCrkk+U=
 
 wrappy@1:
   version "1.0.2"

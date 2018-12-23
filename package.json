@@ -4,16 +4,17 @@
   "author": "Eric Chen",
   "description": "import style for personal use",
   "license": "MIT",
+  "private": true,
   "dependencies": {
     "import-sort": "^5.2.0",
     "import-sort-style": "^5.0.0"
   },
   "devDependencies": {
-    "typescript": "^3.0.1"
+    "typescript": "^3.2.2"
   },
   "optionalDependencies": {
-    "tslint": "^5.11.0",
-    "tslint-config-airbnb": "^5.9.2"
+    "tslint": "^5.12.0",
+    "tslint-config-airbnb": "^5.11.1"
   },
   "scripts": {
     "build": "tsc",

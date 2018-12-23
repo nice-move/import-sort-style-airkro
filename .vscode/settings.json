@@ -5,6 +5,7 @@
     "reactstrap",
     "toml",
     "vonic",
+    "vuex",
     "zent"
   ]
 }
