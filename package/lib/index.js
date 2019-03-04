@@ -50,8 +50,7 @@ exports.default = (styleApi) => {
                 'lodash',
                 'luxon',
                 'md5',
-                'moment',
-                'qs'
+                'moment'
             ]), aboutModule('lodash')),
             sort: moduleName(naturally)
         },
@@ -130,14 +129,9 @@ exports.default = (styleApi) => {
                 'element-react',
                 'element-ui',
                 'material-ui',
-                'mint-ui',
-                'react-uwp',
                 'reactstrap',
                 'semantic-ui-react',
-                'vant',
-                'vonic',
-                'vux',
-                'zent'
+                'vant'
             ]),
             sort: moduleName(naturally)
         },

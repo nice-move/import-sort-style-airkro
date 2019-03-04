@@ -99,8 +99,7 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
           'lodash',
           'luxon',
           'md5',
-          'moment',
-          'qs'
+          'moment'
         ]),
         aboutModule('lodash')
       ),
@@ -184,14 +183,9 @@ export default (styleApi: IStyleAPI): IStyleItem[] => {
         'element-react',
         'element-ui',
         'material-ui',
-        'mint-ui',
-        'react-uwp',
         'reactstrap',
         'semantic-ui-react',
-        'vant',
-        'vonic',
-        'vux',
-        'zent'
+        'vant'
       ]),
       sort: moduleName(naturally)
     },
